@@ -12,4 +12,12 @@ class ContributionServiceTest {
     assertThrows(IllegalArgumentException.class,
         () -> service.contribute("member-1", 0));
   }
+
+  @Test
+  void rejectsNegativeContribution() {
+    ContributionService service = new ContributionService();
+
+    assertThrows(IllegalArgumentException.class,
+        () -> service.contribute("member-1", -500));
+  }
 }
