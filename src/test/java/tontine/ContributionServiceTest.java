@@ -1,5 +1,7 @@
+
 package tontine;
 
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -19,5 +21,12 @@ class ContributionServiceTest {
 
     assertThrows(IllegalArgumentException.class,
         () -> service.contribute("member-1", -500));
+  }
+
+  @Test
+  void acceptsPositiveContribution() {
+    ContributionService service = new ContributionService();
+
+    assertDoesNotThrow(() -> service.contribute("member-1", 5000));
   }
 }
